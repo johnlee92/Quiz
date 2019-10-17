@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D515FABA52A997DDD6C6BBCA /* Pods_Quiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB72546E516BA20351B30E4F /* Pods_Quiz.framework */; };
 		F835986C2357E74300A843E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835986B2357E74300A843E5 /* AppDelegate.swift */; };
 		F835986E2357E74300A843E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835986D2357E74300A843E5 /* SceneDelegate.swift */; };
 		F83598702357E74300A843E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F835986F2357E74300A843E5 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2230628701FDBB4A857F4AE0 /* Pods-Quiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz.debug.xcconfig"; path = "Target Support Files/Pods-Quiz/Pods-Quiz.debug.xcconfig"; sourceTree = "<group>"; };
+		5FF7D72FAA4100CF5B3B35AF /* Pods-Quiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz.release.xcconfig"; path = "Target Support Files/Pods-Quiz/Pods-Quiz.release.xcconfig"; sourceTree = "<group>"; };
+		CB72546E516BA20351B30E4F /* Pods_Quiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83598682357E74300A843E5 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F835986B2357E74300A843E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F835986D2357E74300A843E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D515FABA52A997DDD6C6BBCA /* Pods_Quiz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		792BC47673C6C35DFD3275B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB72546E516BA20351B30E4F /* Pods_Quiz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDD5DF2C907A290DBEF93F1B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2230628701FDBB4A857F4AE0 /* Pods-Quiz.debug.xcconfig */,
+				5FF7D72FAA4100CF5B3B35AF /* Pods-Quiz.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F835985F2357E74300A843E5 = {
 			isa = PBXGroup;
 			children = (
 				F835986A2357E74300A843E5 /* Quiz */,
 				F83598692357E74300A843E5 /* Products */,
+				EDD5DF2C907A290DBEF93F1B /* Pods */,
+				792BC47673C6C35DFD3275B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F835987C2357E74500A843E5 /* Build configuration list for PBXNativeTarget "Quiz" */;
 			buildPhases = (
+				0391E3C824E9873897317766 /* [CP] Check Pods Manifest.lock */,
 				F83598642357E74300A843E5 /* Sources */,
 				F83598652357E74300A843E5 /* Frameworks */,
 				F83598662357E74300A843E5 /* Resources */,
+				52383C87C9322E5B31DE4ED2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0391E3C824E9873897317766 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quiz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52383C87C9322E5B31DE4ED2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quiz/Pods-Quiz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Quiz/Pods-Quiz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Quiz/Pods-Quiz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F83598642357E74300A843E5 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		F835987D2357E74500A843E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2230628701FDBB4A857F4AE0 /* Pods-Quiz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		F835987E2357E74500A843E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FF7D72FAA4100CF5B3B35AF /* Pods-Quiz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
