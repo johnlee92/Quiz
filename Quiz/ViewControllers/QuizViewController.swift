@@ -26,7 +26,12 @@ final class QuizViewController: BaseViewController, View {
     $0.spacing = 16.f
   }
   
-  let questionlabel = UILabel().then {
+  var currentQuestionLabel = UILabel().then {
+    $0.textAlignment = .center
+  }
+  
+  var nextQuestionLabel = UILabel().then {
+    $0.alpha = 0.0
     $0.textAlignment = .center
   }
   
@@ -63,7 +68,8 @@ final class QuizViewController: BaseViewController, View {
     
     view.addSubview(questionStackView)
     view.addSubview(answerStackView)
-    questionStackView.addArrangedSubview(questionlabel)
+    view.addSubview(nextQuestionLabel)
+    questionStackView.addArrangedSubview(currentQuestionLabel)
     questionStackView.addArrangedSubview(nextQuestionButton)
     answerStackView.addArrangedSubview(answerlabel)
     answerStackView.addArrangedSubview(answerButton)
@@ -77,6 +83,9 @@ final class QuizViewController: BaseViewController, View {
     answerStackView.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
       make.top.equalTo(questionStackView.snp.bottom).offset(64.f)
+    }
+    nextQuestionLabel.snp.makeConstraints { make in
+      make.center.equalTo(currentQuestionLabel)
     }
   }
   
@@ -98,7 +107,15 @@ final class QuizViewController: BaseViewController, View {
     reactor.state.map { $0.currentQuestionIndex }
       .distinctUntilChanged()
       .map { Quiz.questions[$0] }
-      .bind(to: self.questionlabel.rx.text)
+      .subscribe(onNext: { [weak self] question in
+        guard let `self` = self else { return }
+        self.nextQuestionLabel.text = question
+        self.nextQuestionLabel.alpha = 0.0
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
+          self.nextQuestionLabel.alpha = 1.0
+          self.currentQuestionLabel.alpha = 0.0
+        }) { _ in swap(&self.nextQuestionLabel, &self.currentQuestionLabel) }
+      })
       .disposed(by: self.disposeBag)
     
     reactor.state.map { $0.isAnswerOpen }
